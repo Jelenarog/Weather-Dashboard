@@ -28,8 +28,9 @@ var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q='+ citySelection + 
     console.log(latCity);
     var lonCity = data[i].lon;
     console.log(lonCity); 
-
-    fetch ('https://api.openweathermap.org/data/2.5/forecast?lat=' + latCity + '&lon=' + lonCity + '&appid=c12efca7b1f4709f10f4fbec34efb724')
+   }
+   
+    fetch ('https://api.openweathermap.org/data/2.5/forecast?&lat=' + latCity + '&lon=' + lonCity + '&appid=c12efca7b1f4709f10f4fbec34efb724&units=metric')
     .then(function(response){
        if(response){
            return response.json();
@@ -37,21 +38,20 @@ var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q='+ citySelection + 
      })
    .then(function (data) {
     console.log(data);
-    for (let i = 0; i < data.length; i++) {
-        var temperature = data.list.main[i].temp;
-        console.log(temperature);
-        
-    }
+    console.log(data.city.name);
+
+    
+    var temperature = data.list[1].main.temp;
+    var humidity = data.list[1].main.humidity;
+    var wind = data.list[1].wind.speed;
+    console.log('wind speed:  ' + wind);
+    console.log('humidity  ' + humidity);
+    console.log('temperature ' + temperature);
+   });
+});
+   }
 
 
-   })
-}
-   
-
-})
-
-
-}
 
 
 
