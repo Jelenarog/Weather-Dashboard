@@ -1,5 +1,5 @@
-var formEl1 = document.querySelector('#cityForm');
-var cityInput = document.querySelector('#userInput');
+var formEl1 = $('#cityForm');
+var cityInput = $('#userInput');
 
 //http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
 
@@ -39,22 +39,23 @@ var apiUrl = 'http://api.openweathermap.org/geo/1.0/direct?q='+ citySelection + 
    .then(function (data) {
     console.log(data);
     console.log(data.city.name);
+  
 
-    
-    var temperature = data.list[1].main.temp;
-    var humidity = data.list[1].main.humidity;
-    var wind = data.list[1].wind.speed;
-    console.log('wind speed:  ' + wind);
-    console.log('humidity  ' + humidity);
-    console.log('temperature ' + temperature);
+    var hourList = [ '1668891600','1668978000', '1669064400' ,'1669150800' ];
+      
+    for (let i = 0; i < data.list.length; i=i+8) {
+      var temperature = data.list[i].main.temp;
+      var humidity = data.list[i].main.humidity;
+      var wind = data.list[i].wind.speed;
+     console.log('wind speed:  ' + wind);
+      console.log('humidity  ' + humidity);
+      console.log('temperature ' + temperature);
+    }
+
+
+
    });
 });
    }
 
-
-
-
-
-
-
-formEl1.addEventListener('submit', formHandler);
+formEl1.on('submit', formHandler);
