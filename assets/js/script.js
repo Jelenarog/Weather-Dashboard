@@ -1,15 +1,54 @@
 var formEl1 = $("#cityForm");
 var cityInput = $("#userInput");
 var displayWeather = $("#fiveDayForecast");
-var dayList = $("ul");
+var dayList = $('#searchedHistory');
 
 var formHandler = function (event) {
   event.preventDefault();
-
+  displayWeather.empty();
   getCityLocation();
+ 
 };
 
+
+var inputValidation = function(input,cityData){
+  if (input !== cityData){
+    console.log('enter valid city na');  
+  
+};
+}
+
+var prevSearch=[];
+
+var recentSearchCheck = function(city){
+if(!prevSearch.includes(city)){
+  prevSearch.push(city);
+  localStorage.setItem('cities',JSON.stringify(prevSearch));
+}
+
+}
+
+var loadCitySearched=function(){
+  prevSearch=JSON.parse(localStorage.getItem('cities'));
+  if (!prevSearch){
+    prevSearch=[];
+  }
+
+
+  dayList.empty();
+ for (let i = prevSearch.length-1; i >= 0; i--) {
+ 
+ //console.log(prevSearch[i]);
+ var searched = $("<li>").addClass("list-group-item").text(prevSearch[i]);
+ 
+ dayList.append(searched);
+  
+ }
+}
+
 var getCityLocation = function () {
+
+
   var citySelection = userInput.value.trim();
 
   //fetch each city data
@@ -25,13 +64,15 @@ var getCityLocation = function () {
       }
     })
     .then(function (data) {
-      console.log(data);
-
+     // console.log(data);
+     
+     recentSearchCheck(citySelection);
+    loadCitySearched();
       for (let i = 0; i < data.length; i++) {
         var latCity = data[i].lat; //get each city geographical coordinates
-        console.log(latCity);
+       // console.log(latCity);
         var lonCity = data[i].lon;
-        console.log(lonCity);
+        //console.log(lonCity);
       }
 
       //get weather forecast for selected city
@@ -50,9 +91,8 @@ var getCityLocation = function () {
           }
         })
         .then(function (data) {
-          console.log(data);
-          console.log(data.city.name);
-
+         // console.log(data);
+          //console.log(data.city.name);
           // if (data.list.length === 0){
           //   var message = $('<p>');
           //   message.text('Please enter valid City name.');
@@ -60,6 +100,8 @@ var getCityLocation = function () {
           //   return;
           // }
           var cityName = data.city.name;
+         console.log(cityName);
+          inputValidation (citySelection,cityName);
 
             for (let i = 0; i < data.list.length; i = i + 8) {
               var date = data.list[i].dt_txt;
@@ -92,13 +134,12 @@ var getCityLocation = function () {
               displayWeather.innerHTML='';
               displayWeather.append(divCol);
             }
-            var searched = $("<li>").addClass("list-group-item").text(cityName);
-            dayList.innerHTML='';
-            dayList.append(searched);
-       
+         
 
         });
     });
 };
 
 formEl1.on("submit", formHandler);
+loadCitySearched();
+//console.log(prevSearch);
