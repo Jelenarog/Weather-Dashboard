@@ -1,9 +1,9 @@
-.container{ 
-    background-image:url("/assets/images/Background.png");
-    height: 100%;
-
-    /* Center and scale the image nicely */
-    background-position: center;
+body {  
+    background-image: url("../images/Background.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
+}
+#currentWeather {
+    padding: 100px;
+    border-radius: 15px;
 }
