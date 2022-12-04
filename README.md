@@ -20,7 +20,7 @@ If user searches for the city they would like to see 5 day weather forecast for 
 ---
 ## Links
 [Github Repository Link](https://github.com/Jelenarog/Weather-Dashboard)<br/>
- [Deployed website]()<br/>
+ [Deployed website](https://jelenarog.github.io/Weather-Dashboard/)<br/>
  [HTML code](/assets/images/HTML-code.png)<br/>
  [JavaScript](/assets/images/Js-code.png)
 
