@@ -52,7 +52,7 @@ var getCityLocation = function () {
   }
  
    else{//fetch each city data
-  var apiUrl ='http://api.openweathermap.org/geo/1.0/direct?q=${citySelection}&appid=c12efca7b1f4709f10f4fbec34efb724&units=metric}';
+  var apiUrl ='https://api.openweathermap.org/geo/1.0/direct?q=${citySelection}&appid=c12efca7b1f4709f10f4fbec34efb724&units=metric}';
   fetch(apiUrl)
     .then(function (response) {
       if (response) {
