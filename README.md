@@ -12,7 +12,9 @@ No installation is required for this application. Users can access WEATHER-DASHB
 ```
 ---
 ## Usage
-The access the WEATHER-DASHBOARD webpage , click the following link: 
+![User-story](./assets/images/User-story.png)
+
+The access the WEATHER-DASHBOARD webpage , click the following link: https://jelenarog.github.io/Weather-Dashboard/
 
 If user searches for the city they would like to see 5 day weather forecast for result will be as below:
 
