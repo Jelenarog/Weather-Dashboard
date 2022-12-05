@@ -52,7 +52,10 @@ var getCityLocation = function () {
   }
  
    else{//fetch each city data
-  var apiUrl ='https://api.openweathermap.org/geo/1.0/direct?q=${citySelection}&appid=c12efca7b1f4709f10f4fbec34efb724&units=metric}';
+  var apiUrl =
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
+    citySelection +
+    "&appid=c12efca7b1f4709f10f4fbec34efb724";
   fetch(apiUrl)
     .then(function (response) {
       if (response) {
@@ -135,7 +138,7 @@ var getCityLocation = function () {
             var temperature = data.list[i].main.temp;
             var humidity = data.list[i].main.humidity;
             var wind = data.list[i].wind.speed;
-            var icon = data.list[i].weather[0].icon; //TO DO:show weather icon for each day
+            var icon = data.list[i].weather[0].icon; //TO DO:show weather icon for each
             var iconUrl='http://openweathermap.org/img/w/'+icon+ '.png';
             var iconImage = $('<image>').addClass('card-top-image');
             iconImage.attr('src', iconUrl);
