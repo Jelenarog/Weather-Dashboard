@@ -1,6 +1,7 @@
 body {  
     background-image: url("../images/Background.png");
-    background-repeat: no-repeat;
+    overflow-y: scroll;
+    background-repeat: repeat;
     background-size: 100%;
 }
 #currentWeather {

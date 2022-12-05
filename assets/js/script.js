@@ -116,8 +116,7 @@ var getCityLocation = function () {
         });
 
 
-      fetch(
-        "https://api.openweathermap.org/data/2.5/forecast?&lat=" +
+      fetch("https://api.openweathermap.org/data/2.5/forecast?&lat=" +
           latCity +
           "&lon=" +
           lonCity +
